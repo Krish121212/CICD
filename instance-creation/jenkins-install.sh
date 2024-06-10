@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+##curl -o /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
 echo "[jenkins]
 name=Jenkins-stable
 baseurl=http://pkg.jenkins.io/redhat-stable
@@ -7,8 +10,8 @@ gpgcheck=1" > /etc/yum.repos.d/jenkins.repo
 
 cd /etc/yum.repos.d/
 
-sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key 
-sudo dnf install fontconfig java-17-openjdk -y
+rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key 
+install fontconfig java-17-openjdk -y
 sudo dnf install jenkins -y
 systemctl daemon-reload 
 systemctl enable jenkins
