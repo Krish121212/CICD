@@ -18,8 +18,8 @@ pipeline {
 
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')//password
     }
-    environment {
-        DEPLOY_TO= 'production'
+    environment { //key value concept for passing values
+        DEPLOY_TO= 'production' //key value concept for passing values
         SEX = 'male'
     }
     stages {
