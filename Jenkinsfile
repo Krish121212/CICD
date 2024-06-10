@@ -4,7 +4,7 @@ pipeline {
     }
     options{
         //how much time does a snapshot need to run? max time? that we will configure here
-        timeout(time: 1, unit: 'SECONDS') 
+        timeout(time: 1, unit: 'SECONDS') //we can give mints, hours, seconds etc.. 
     }
     stages {
         stage('Build') {
