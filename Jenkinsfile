@@ -4,7 +4,7 @@ pipeline {
     }
     options{
         //how much time does a snapshot need to run? max time? that we will configure here
-        timeout(time: 1, unit: 'SECONDS') //we can give mints, hours, seconds etc.. 
+        timeout(time: 30, unit: 'MINUTES') //we can give mints, hours, seconds etc.. 
         disableConcurrentBuilds() //Next build will wait for the previous build to get completed.
     }
     stages {
