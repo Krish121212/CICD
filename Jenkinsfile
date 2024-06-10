@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'Agent-1' //config agent in jenkins after creatin server and add the agent name here
+    }
     stages {
         stage('Build') {
             steps {
