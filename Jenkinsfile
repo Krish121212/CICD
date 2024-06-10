@@ -19,8 +19,8 @@ pipeline {
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')//password
     }
     environment {
-        name: 'DEPLOY_TO', value: 'production'
-        name: 'SEX', value: 'male'
+        DEPLOY_TO= 'production'
+        SEX = 'male'
     }
     stages {
         stage('Build') {
