@@ -51,7 +51,7 @@ pipeline {
             }
         }
     }
-    post { //we have many posts, below are 3 among them. so posts run after build
+    post {//we have many posts,below are 3 among them. so posts run after build.used for trigging mails about status etc
         always { 
             echo 'the steps we write here will always run after any build'
         }
