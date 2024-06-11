@@ -1,10 +1,11 @@
-module "jenkins-main" {
+module "jenkins" {
   source  = "terraform-aws-modules/ec2-instance/aws"
 
   name = "jenkins-master"
 
   instance_type          = "t3.micro"
   vpc_security_group_ids = [ "sg-0b4982a41aa37eaa1" ]
+  subnet_id = "subnet-0cbada78ee50d83ab"
   ami = data.aws_ami.ami-info.id
   user_data = file("jenkins-install.sh")
 
@@ -20,6 +21,7 @@ module "jenkins-agent" {
 
   instance_type          = "t3.micro"
   vpc_security_group_ids = [ "sg-0b4982a41aa37eaa1" ]
+  subnet_id = "subnet-0cbada78ee50d83ab"
   ami = data.aws_ami.ami-info.id
   user_data = file("jenkins-agent.sh")
 
@@ -36,11 +38,11 @@ module "records" {
 
   records = [
     {
-      name    = "jenkins-main"
+      name    = "jenkins"
       type    = "A"
       ttl     = 1
       records = [
-        module.jenkins-main.public_ip
+        module.jenkins.public_ip
       ]
     },
     {
