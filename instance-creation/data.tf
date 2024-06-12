@@ -15,3 +15,21 @@ data "aws_ami" "ami-info" {
     values = ["hvm"]
   }
 }
+
+# data "aws_ami" "nexus-ami-info" {
+#   most_recent      = true
+#   owners           = ["679593333241"]
+
+#   filter {
+#     name   = "name"
+#     values = ["SolveDevOps-Nexus-Server-*"]
+#   }
+#   filter {
+#     name   = "root-device-type"
+#     values = ["ebs"]
+#   }
+#   filter {
+#     name   = "virtualization-type"
+#     values = ["hvm"]
+#   }
+# }
