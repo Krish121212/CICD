@@ -30,32 +30,33 @@ module "jenkins-agent" {
   }
 }
 
-# resource "aws_key_pair" "tools" {
-#   key_name = "tools"
-#   public_key = file("~/.ssh/tools.pub")
-# }
+resource "aws_key_pair" "tools" {
+  key_name = "tools"
+  public_key = file("~/.ssh/tools.pub")
+}
 
-# module "nexus" {
-#   source  = "terraform-aws-modules/ec2-instance/aws"
+module "nexus" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
 
-#   name = "nexus"
+  name = "nexus"
 
-#   instance_type          = "t3.medium"
-#   vpc_security_group_ids = [ "sg-0b4982a41aa37eaa1" ]
-#   subnet_id = "subnet-0cbada78ee50d83ab"
-#   ami = data.aws_ami.nexus-ami-info.id
-#   key_name = aws_key_pair.tools.key_name
-#   root_block_device = [ 
-#     {
-#       volume_type = "gp3"
-#       volume_size = 30
-#     } 
-#   ] 
+  instance_type          = "t3.medium"
+  vpc_security_group_ids = [ "sg-0b4982a41aa37eaa1" ]
+  # convert StringList to list and get first element
+  subnet_id = "subnet-0cbada78ee50d83ab"
+  ami = data.aws_ami.nexus-ami-info.id
+  key_name = aws_key_pair.tools.key_name
+  root_block_device = [ 
+    {
+      volume_type = "gp3"
+      volume_size = 30
+    } 
+  ] 
 
-#   tags = {
-#     Name = "nexus"
-#   }
-# }
+  tags = {
+    Name = "nexus"
+  }
+}
 
 module "records" {
   source  = "terraform-aws-modules/route53/aws//modules/records"
@@ -79,15 +80,15 @@ module "records" {
       records = [
         module.jenkins-agent.private_ip
       ]
+    },
+    {
+      name    = "nexus"
+      type    = "A"
+      ttl     = 1
+      allow_overwrite = true
+      records = [
+        module.nexus.private_ip
+      ]
     }
-    # {
-    #   name    = "nexus"
-    #   type    = "A"
-    #   ttl     = 1
-    #   allow_overwrite = true
-    #   records = [
-    #     module.nexus.private_ip
-    #   ]
-    # }
   ]
 }

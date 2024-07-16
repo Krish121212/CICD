@@ -16,20 +16,20 @@ data "aws_ami" "ami-info" {
   }
 }
 
-# data "aws_ami" "nexus-ami-info" {
-#   most_recent      = true
-#   owners           = ["679593333241"]
+data "aws_ami" "nexus-ami-info" {
+  most_recent      = true
+  owners           = ["679593333241"]
 
-#   filter {
-#     name   = "name"
-#     values = ["SolveDevOps-Nexus-Server-*"]
-#   }
-#   filter {
-#     name   = "root-device-type"
-#     values = ["ebs"]
-#   }
-#   filter {
-#     name   = "virtualization-type"
-#     values = ["hvm"]
-#   }
-# }
+  filter {
+    name   = "name"
+    values = ["SolveDevOps-Nexus-Server-*"]
+  }
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
