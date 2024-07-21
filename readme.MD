@@ -1,10 +1,11 @@
-Plugins:
+# Jenkins
 
-Pipeline stage view
-AnsiColor
-Pipeline Utility Steps
-Nexus Artifact Uploader
-Rebuild
+**Plugins:**
+* Pipeline stage view
+* AnsiColor
+* Pipeline Utility Steps
+* Nexus Artifact Uploader
+* Rebuild
 
 Restart Jenkins once plugins are installed
 
