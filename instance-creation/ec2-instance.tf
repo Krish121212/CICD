@@ -56,7 +56,7 @@ module "nexus" {
   tags = {
     Name = "nexus"
   }
-}
+} 
 
 module "records" {
   source  = "terraform-aws-modules/route53/aws//modules/records"
