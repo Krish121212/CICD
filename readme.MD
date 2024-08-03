@@ -3,9 +3,13 @@
 **Plugins:**
 * Pipeline stage view
 * AnsiColor
+* Pipeline As YAML (Incubated)
 * Pipeline Utility Steps
 * Nexus Artifact Uploader
 * Rebuild
+* Sonarqube plugin
+* jenkins publisher ucd plugin
+
 
 Restart Jenkins once plugins are installed
 
