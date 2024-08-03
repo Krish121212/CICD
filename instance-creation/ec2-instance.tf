@@ -30,12 +30,12 @@ module "jenkins-agent" {
   }
 }
 
-resource "aws_key_pair" "tools" {
+/* resource "aws_key_pair" "tools" {
   key_name = "tools"
   public_key = file("~/.ssh/tools.pub")
-}
+} */
 
-module "nexus" {
+/* module "nexus" {
   source  = "terraform-aws-modules/ec2-instance/aws"
 
   name = "nexus"
@@ -56,7 +56,7 @@ module "nexus" {
   tags = {
     Name = "nexus"
   }
-} 
+}  */
 
 module "records" {
   source  = "terraform-aws-modules/route53/aws//modules/records"
@@ -80,8 +80,8 @@ module "records" {
       records = [
         module.jenkins-agent.private_ip
       ]
-    },
-    {
+    }
+/*     {
       name    = "nexus"
       type    = "A"
       ttl     = 1
@@ -89,6 +89,6 @@ module "records" {
       records = [
         module.nexus.private_ip
       ]
-    }
+    } */
   ]
 }
