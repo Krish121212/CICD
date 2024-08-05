@@ -19,7 +19,7 @@ module "jenkins-agent" {
 
   name = "jenkins-agent"
 
-  instance_type          = "t3.micro"
+  instance_type          = "t3.medium"
   vpc_security_group_ids = [ "sg-0b4982a41aa37eaa1" ]
   subnet_id = "subnet-0cbada78ee50d83ab"
   ami = data.aws_ami.ami-info.id
